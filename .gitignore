@@ -1,0 +1,50 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.venv/
+venv/
+ENV/
+
+# ======================
+# Streamlit
+# ======================
+.streamlit/
+
+# ======================
+# Data & Models (IMPORTANT)
+# ======================
+data/
+uploads/
+models/
+*.csv
+*.parquet
+*.joblib
+*.pkl
+*.h5
+
+# ======================
+# Logs & Temp
+# ======================
+logs/
+*.log
+tmp/
+.cache/
+
+# ======================
+# IDE & OS
+# ======================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ======================
+# Jupyter
+# ======================
+.ipynb_checkpoints/
