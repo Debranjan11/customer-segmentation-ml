@@ -113,13 +113,26 @@ if run_button:
     # -----------------------------
     # Visualization
     # -----------------------------
+    
     st.subheader("📈 Segment Visualization")
 
-    fig, ax = plt.subplots()
-    pd.Series(summary).plot(kind="bar", ax=ax)
-    ax.set_xlabel("Segment")
-    ax.set_ylabel("Number of Customers")
-    ax.set_title("Customer Distribution by Segment")
+    fig, ax = plt.subplots(figsize=(3, 2))
+
+    pd.Series(summary).plot(
+        kind="bar",
+        ax=ax,
+        width=0.6
+    )
+
+    ax.set_xlabel("Segment", fontsize=8)
+    ax.set_ylabel("Number of Customers", fontsize=8)
+    ax.set_title("Customer Distribution by Segment", fontsize=10)
+
+    ax.tick_params(axis='both', labelsize=8)
+    ax.grid(axis="y", linestyle="--", alpha=0.3)
+
+    plt.tight_layout()
+
     st.pyplot(fig)
 
     # -----------------------------
@@ -131,19 +144,27 @@ if run_button:
     st.subheader("🧠 PCA Cluster Visualization")
 
     if segment_column == "ML_Segment":
-        fig, ax = plt.subplots()
+
+    # Smaller, presentation-friendly figure
+        fig, ax = plt.subplots(figsize=(4, 3))
 
         scatter = ax.scatter(
             segmented_df["PC1"],
             segmented_df["PC2"],
             c=segmented_df["ML_Segment"],
             cmap="viridis",
-            alpha=0.7
-        )
+            s=40,          # marker size (important)
+            alpha=0.8
+    )
 
-    ax.set_xlabel("Principal Component 1")
-    ax.set_ylabel("Principal Component 2")
-    ax.set_title("Customer Clusters (PCA Projection)")
+    ax.set_xlabel("Principal Component 1", fontsize=8)
+    ax.set_ylabel("Principal Component 2", fontsize=8)
+    ax.set_title("Customer Clusters (PCA Projection)", fontsize=12)
+
+    ax.tick_params(axis='both', labelsize=8)
+    ax.grid(True, linestyle="--", alpha=0.3)
+
+    plt.tight_layout()
 
     st.pyplot(fig)
 
